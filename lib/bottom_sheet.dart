@@ -1,3 +1,4 @@
+import 'package:bottom_navigation/gift_card.dart';
 import 'package:bottom_navigation/histroy.dart';
 import 'package:bottom_navigation/home.dart';
 import 'package:bottom_navigation/qr_code.dart';
@@ -11,7 +12,7 @@ class BottomSheetScreen extends StatefulWidget {
 }
 
 class _BottomSheetScreenState extends State<BottomSheetScreen> {
-  var _pagesData = [HomeScren(), QRScanner(), History()];
+  var _pagesData = [HomeScren(), QRScanner(), History(), GiftCard()];
   int _selectedItem = 0;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,13 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
         child: _pagesData[_selectedItem],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.black54,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.grey,
+        items:
+            // const <BottomNavigationBarItem>
+            const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -36,6 +43,10 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
             label: 'History',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.wallet_giftcard_outlined),
+            label: 'Gift Card',
           ),
         ],
         currentIndex: _selectedItem,
